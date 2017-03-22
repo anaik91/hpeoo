@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="b43acdb2-5fc1-4490-919b-2d9cb78a66d4">
+  <descriptionCdata><![CDATA[b43acdb2-5fc1-4490-919b-2d9cb78a66d4.097f34ca-4049-4e0e-8bc9-56baafee97f0.description=<pre>\nAccepts an object in the JavaScript Object Notation format (JSON) and\nreturns a value for the specified key.\n\nThe JSON format encodes objects as a set of unordered key/value pairs, which is\nsimilar to a structure or map in other programming languages.  For example,\n   { "city" \: "Palo Alto", \n     "state" \: "CA" }\nis an object with two elements one with the name "city" having the value "Palo\nAlto", and the other being the name "state" with the value "CA". This operation would \nreturn "Palo Alto" if user enters "city" as a key.\n\nIf the input object contains JSON array, array index can be used in the key input. For example, \n{ "location"\: [\n      {"city"\: "Roseville", "country"\: "United States"},\n      {"city"\: "Cluj", "country"\: "Romania"},\n      {"city"\: "Yehud", "country"\: "Israel"}]    \n}\nThe operation would return "Roseville" if user enters "location[0].city" as a key.\n\nJavaScript objects are useful for representing structured data, and are\nespecially when used within an array.  For example, an operation that retrieves\na set of incidents from an external system may return the entire list in one\narray of incident objects.  The description of the enclosing folder,\n/Library/Utility Operations/Container/JavaScript Objects has more examples, and\nthe JSON format is described completely at http\://www.json.org.\n\nInputs\n\n   object\n      The JavaScript object.  \n      The operation will return a failure if it is not a JavaScript object.\n\n   key\n      The key in the object to get the value of.\n\nResponses\n\n   success\n      The value was successfully returned for the specified key. \n\n   failure\n      There was some error in processing the object, most likely because the\n      object is not in valid JavaScript Object Notation or the specified key does not exist in the object.  \n      You may wish to use a tool such as http\://www.jsonlint.com/ to help diagnose problems with\n      JavaScript Object Notation.\n\nOutputs\n\n   The primary output will be the value for the specified key in the object.\n\nNote\n\n    If the value in JSON object is in scientific notation, the returned output will be converted to an equivalent decimal number. Ex, 2.9e+1 will be converted to 29.\n</pre>
+b43acdb2-5fc1-4490-919b-2d9cb78a66d4.d8142256-6f8a-4227-be04-5b5932f9c0bb.description=<pre>\nAccepts an object in the JavaScript Object Notation format (JSON) and\nreturns a value for the specified key.\n\nThe JSON format encodes objects as a set of unordered key/value pairs, which is\nsimilar to a structure or map in other programming languages.  For example,\n   { "city" \: "Palo Alto", \n     "state" \: "CA" }\nis an object with two elements one with the name "city" having the value "Palo\nAlto", and the other being the name "state" with the value "CA". This operation would \nreturn "Palo Alto" if user enters "city" as a key.\n\nIf the input object contains JSON array, array index can be used in the key input. For example, \n{ "location"\: [\n      {"city"\: "Roseville", "country"\: "United States"},\n      {"city"\: "Cluj", "country"\: "Romania"},\n      {"city"\: "Yehud", "country"\: "Israel"}]    \n}\nThe operation would return "Roseville" if user enters "location[0].city" as a key.\n\nJavaScript objects are useful for representing structured data, and are\nespecially when used within an array.  For example, an operation that retrieves\na set of incidents from an external system may return the entire list in one\narray of incident objects.  The description of the enclosing folder,\n/Library/Utility Operations/Container/JavaScript Objects has more examples, and\nthe JSON format is described completely at http\://www.json.org.\n\nInputs\n\n   object\n      The JavaScript object.  \n      The operation will return a failure if it is not a JavaScript object.\n\n   key\n      The key in the object to get the value of.\n\nResponses\n\n   success\n      The value was successfully returned for the specified key. \n\n   failure\n      There was some error in processing the object, most likely because the\n      object is not in valid JavaScript Object Notation or the specified key does not exist in the object.  \n      You may wish to use a tool such as http\://www.jsonlint.com/ to help diagnose problems with\n      JavaScript Object Notation.\n\nOutputs\n\n   The primary output will be the value for the specified key in the object.\n\nNote\n\n    If the value in JSON object is in scientific notation, the returned output will be converted to an equivalent decimal number. Ex, 2.9e+1 will be converted to 29.\n</pre>
+b43acdb2-5fc1-4490-919b-2d9cb78a66d4.f87aaf4c-3abc-4238-94f0-5b9230ba953c.description=<pre>\nGet the value of an elemnt in a JSON array. If the value of the element is a simple type, i.e. a string or a number, it will be \nreturned as-is. If it is a complex JSON object, i.e. '{"one"\:1}' it will be returned in JSON format. \n\nWhen specifying the index to an array element in javascript it is possible to use the standard notation, where the 1st \nelement from the left is index 0, and the right-most element is (n-1), in an array with n elements. However, \nit is also possible to specify elements starting from the right side of the array using negative numbers, in which case\nthe right-most element is referred to by index -1 and the left-most element is at position (-1 * n), again for an array with n elements.\n\n\nThe description of the enclosing folder describes the JSON format with examples,\nand the JSON format is described completely at http\://www.json.org.\n\n\nInputs\:\n    array - String representation of a JSON array. Arrays in JSON are comma seperated lists of objects, enclosed in square brackets ( [ ] ).\nExamples\: [1,2,3] or ["one","two","three"] or [{"one"\:1, "two"\:2}, 3, "four"]\n\n    index -The index of the element to retrieve from the array. \n               See the notes above for more information on using negative numbers to specify array elements.\nValid values\: Integer between (-1*n) and (n-1) for an array with n elements.\nDefault value\: undefined (insert the new element at the end of the array)\n\n\nResponses\:\n    success - The operation completed as stated in the description.\n    failure - The operation failed. See the message in returnResult for details\n\n\nResults\:\n    returnResult - The new JSON array with the inserted element.\n\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>jsin</name>
+  <categories/>
+  <inputs/>
+  <possibleResponses>
+    <opResponse id="20eec004-0783-4488-a2b0-8566cfa787d5">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="52efbb05-c05d-480c-b2bc-f62b50dd5164">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="97bacdae-ca0e-4925-9224-83cb3271b247">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="ce332f05-0576-4380-94e8-dac44df79d9c">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="d8142256-6f8a-4227-be04-5b5932f9c0bb">
+      <annotation>b43acdb2-5fc1-4490-919b-2d9cb78a66d4.d8142256-6f8a-4227-be04-5b5932f9c0bb.description</annotation>
+      <name>Get Value from Object</name>
+      <bounds>
+        <x>236.0</x>
+        <y>139.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="15a539c5-83e7-49a0-ab26-a3819ec2252d">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>object</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>{
+    &quot;kind&quot;: &quot;tm:cm:device-group:device-groupcollectionstate&quot;,
+    &quot;selfLink&quot;: &quot;https://localhost/mgmt/tm/cm/device-group?ver=11.6.1&quot;,
+    &quot;items&quot;: [
+        {
+            &quot;kind&quot;: &quot;tm:cm:device-group:device-groupstate&quot;,
+            &quot;name&quot;: &quot;device-group-failover-23f7fd8b6d9b&quot;,
+            &quot;partition&quot;: &quot;Common&quot;,
+            &quot;fullPath&quot;: &quot;/Common/device-group-failover-23f7fd8b6d9b&quot;,
+            &quot;generation&quot;: 1,
+            &quot;selfLink&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~device-group-failover-23f7fd8b6d9b?ver=11.6.1&quot;,
+            &quot;asmSync&quot;: &quot;disabled&quot;,
+            &quot;autoSync&quot;: &quot;disabled&quot;,
+            &quot;fullLoadOnSync&quot;: &quot;false&quot;,
+            &quot;incrementalConfigSyncSizeMax&quot;: 1024,
+            &quot;networkFailover&quot;: &quot;disabled&quot;,
+            &quot;saveOnAutoSync&quot;: &quot;false&quot;,
+            &quot;type&quot;: &quot;sync-failover&quot;,
+            &quot;devicesReference&quot;: {
+                &quot;link&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~device-group-failover-23f7fd8b6d9b/devices?ver=11.6.1&quot;,
+                &quot;isSubcollection&quot;: true
+            }
+        },
+        {
+            &quot;kind&quot;: &quot;tm:cm:device-group:device-groupstate&quot;,
+            &quot;name&quot;: &quot;device_trust_group&quot;,
+            &quot;partition&quot;: &quot;Common&quot;,
+            &quot;fullPath&quot;: &quot;/Common/device_trust_group&quot;,
+            &quot;generation&quot;: 40,
+            &quot;selfLink&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~device_trust_group?ver=11.6.1&quot;,
+            &quot;asmSync&quot;: &quot;disabled&quot;,
+            &quot;autoSync&quot;: &quot;enabled&quot;,
+            &quot;fullLoadOnSync&quot;: &quot;false&quot;,
+            &quot;incrementalConfigSyncSizeMax&quot;: 1024,
+            &quot;networkFailover&quot;: &quot;disabled&quot;,
+            &quot;saveOnAutoSync&quot;: &quot;false&quot;,
+            &quot;type&quot;: &quot;sync-only&quot;,
+            &quot;devicesReference&quot;: {
+                &quot;link&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~device_trust_group/devices?ver=11.6.1&quot;,
+                &quot;isSubcollection&quot;: true
+            }
+        },
+        {
+            &quot;kind&quot;: &quot;tm:cm:device-group:device-groupstate&quot;,
+            &quot;name&quot;: &quot;gtm&quot;,
+            &quot;partition&quot;: &quot;Common&quot;,
+            &quot;fullPath&quot;: &quot;/Common/gtm&quot;,
+            &quot;generation&quot;: 40,
+            &quot;selfLink&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~gtm?ver=11.6.1&quot;,
+            &quot;asmSync&quot;: &quot;disabled&quot;,
+            &quot;autoSync&quot;: &quot;disabled&quot;,
+            &quot;fullLoadOnSync&quot;: &quot;false&quot;,
+            &quot;incrementalConfigSyncSizeMax&quot;: 1024,
+            &quot;networkFailover&quot;: &quot;disabled&quot;,
+            &quot;saveOnAutoSync&quot;: &quot;false&quot;,
+            &quot;type&quot;: &quot;sync-only&quot;,
+            &quot;devicesReference&quot;: {
+                &quot;link&quot;: &quot;https://localhost/mgmt/tm/cm/device-group/~Common~gtm/devices?ver=11.6.1&quot;,
+                &quot;isSubcollection&quot;: true
+            }
+        }
+    ]
+} </value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="c2f5e4e1-f565-4dc3-86ef-0a7f44b773f8">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>key</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>items</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="61b83abe-34e7-42e4-a614-8974276896b8">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e0bb7532-35ad-46c3-9cb9-72500eb8381f</refId>
+          </destination>
+          <source>
+            <refId>d8142256-6f8a-4227-be04-5b5932f9c0bb</refId>
+          </source>
+          <positions>
+            <point>
+              <x>286.0</x>
+              <y>173.0</y>
+            </point>
+            <point>
+              <x>50.0</x>
+              <y>34.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="defe9cc5-b421-4097-933f-57ef92266101">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>f87aaf4c-3abc-4238-94f0-5b9230ba953c</refId>
+          </destination>
+          <source>
+            <refId>d8142256-6f8a-4227-be04-5b5932f9c0bb</refId>
+          </source>
+          <positions>
+            <point>
+              <x>286.0</x>
+              <y>173.0</y>
+            </point>
+            <point>
+              <x>399.0</x>
+              <y>90.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>61fc6fd2-7d5c-4d5c-aaa9-71c8250310f2</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="f73b226a-8437-4713-ba84-e48eece8d52c">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>json</contextKey>
+          <expression id="22922c38-52aa-49d3-b1ed-8ac75efbe3cd">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <step id="097f34ca-4049-4e0e-8bc9-56baafee97f0">
+      <annotation>b43acdb2-5fc1-4490-919b-2d9cb78a66d4.097f34ca-4049-4e0e-8bc9-56baafee97f0.description</annotation>
+      <name>Get Value from Object</name>
+      <bounds>
+        <x>502.0</x>
+        <y>164.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="409340be-5152-4d70-8100-0709651e8b1b">
+          <annotation></annotation>
+          <fromContextKey>json</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>object</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value></value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="daeb973e-2e15-4242-8735-0442df1e42d6">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>key</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>type</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="9edb7f4f-a036-40e2-91f0-fd441029cad4">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e2fa589c-8d99-4d72-a3b6-a013ed05385f</refId>
+          </destination>
+          <source>
+            <refId>097f34ca-4049-4e0e-8bc9-56baafee97f0</refId>
+          </source>
+          <positions>
+            <point>
+              <x>582.0</x>
+              <y>352.0</y>
+            </point>
+            <point>
+              <x>542.0</x>
+              <y>177.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="9821c9ec-5308-4076-a1dd-c325d0711aa4">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e0bb7532-35ad-46c3-9cb9-72500eb8381f</refId>
+          </destination>
+          <source>
+            <refId>097f34ca-4049-4e0e-8bc9-56baafee97f0</refId>
+          </source>
+          <positions>
+            <point>
+              <x>552.0</x>
+              <y>198.0</y>
+            </point>
+            <point>
+              <x>356.0</x>
+              <y>451.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>61fc6fd2-7d5c-4d5c-aaa9-71c8250310f2</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="f643a996-e018-433d-b590-aa8a44913ad7">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>json</contextKey>
+          <expression id="4c5c0473-73dd-4b2f-be68-7dc63b326217">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="e0bb7532-35ad-46c3-9cb9-72500eb8381f">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>306.0</x>
+        <y>417.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="3c1dec70-f9ef-4baa-81c4-72cebf6c6d4e">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e0bb7532-35ad-46c3-9cb9-72500eb8381f</refId>
+          </destination>
+          <source>
+            <refId>e0bb7532-35ad-46c3-9cb9-72500eb8381f</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <step id="f87aaf4c-3abc-4238-94f0-5b9230ba953c">
+      <annotation>b43acdb2-5fc1-4490-919b-2d9cb78a66d4.f87aaf4c-3abc-4238-94f0-5b9230ba953c.description</annotation>
+      <name>Get Array Entry</name>
+      <bounds>
+        <x>349.0</x>
+        <y>56.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <userInputBinding id="15a392b8-488f-4838-b24f-0aef2a149a67">
+          <annotation></annotation>
+          <fromContextKey>json</fromContextKey>
+          <assignFromContext>true</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>array</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <record>false</record>
+          <prompt></prompt>
+          <isMultiSelect>false</isMultiSelect>
+          <sourceDelimiter>|</sourceDelimiter>
+        </userInputBinding>
+        <staticBinding id="6d8f026a-3743-4b85-97a8-ddef85df3804">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>index</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>0</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="ab223f9f-492d-4c3a-b454-cd67876512b1">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>097f34ca-4049-4e0e-8bc9-56baafee97f0</refId>
+          </destination>
+          <source>
+            <refId>f87aaf4c-3abc-4238-94f0-5b9230ba953c</refId>
+          </source>
+          <positions>
+            <point>
+              <x>399.0</x>
+              <y>90.0</y>
+            </point>
+            <point>
+              <x>552.0</x>
+              <y>198.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="2959869e-7774-412c-9b40-3714f9e38c6e">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e0bb7532-35ad-46c3-9cb9-72500eb8381f</refId>
+          </destination>
+          <source>
+            <refId>f87aaf4c-3abc-4238-94f0-5b9230ba953c</refId>
+          </source>
+          <positions>
+            <point>
+              <x>376.72872340425533</x>
+              <y>122.0</y>
+            </point>
+            <point>
+              <x>356.0</x>
+              <y>468.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>f14e6ff1-d83c-44c5-a00d-53ec7b689105</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="665c7a79-d0c1-4031-9460-f8d57ef4bade">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>json</contextKey>
+          <expression id="f5206e10-e92a-47d6-9c79-cd162ea83771">
+            <annotation></annotation>
+            <name>Result Field: returnResult</name>
+            <fieldName>returnResult</fieldName>
+            <sourceType>RAWRESULT</sourceType>
+            <filters/>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="e2fa589c-8d99-4d72-a3b6-a013ed05385f">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>718.0</x>
+        <y>133.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="f2e27062-fad5-4bb9-bd7b-df318d10c6bc">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>e2fa589c-8d99-4d72-a3b6-a013ed05385f</refId>
+          </destination>
+          <source>
+            <refId>e2fa589c-8d99-4d72-a3b6-a013ed05385f</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+  </steps>
+  <startSteps>d8142256-6f8a-4227-be04-5b5932f9c0bb</startSteps>
+</flow>
