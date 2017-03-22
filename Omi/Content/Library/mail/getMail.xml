@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow id="40b2b7b3-3112-4f0b-af43-ce07eba398ea">
+  <descriptionCdata><![CDATA[40b2b7b3-3112-4f0b-af43-ce07eba398ea.24bfa2f1-5569-420e-9165-527d49fd027e.description=<pre>\nThis operation retrieves mail messages from a predefined start time to current time that are similar with the mailSubject filter given as input\nThe operation identifies and returns the requested HPE OO Flow to be trigerred and the original mailSender.\n\nInputs\:\n    apiUser - The administrative account which is used to connect to Azure AD/Office 365\n    apiPassword - apiUser's password\n    keepSessionAlive - If true, the operation will not close the PowerShell runspace (i.e. the PSSession in case of remote connections ) created during the execution and returns the runspaceID as the result of the operation. Actually the PowerShell runspace is saved in the OO session and can be used in other operations using the runspaceID result of previous operation.\nDefault value\: false\n    connectionTimeout - Determines how long the client computer waits for the remote session connection to be established. When the interval expires, the command to establish the connection fails. Enter a positive value in milliseconds.\nDefault value\: 180000 (3 minutes).\n    scriptTimeout - Determines how long the client computer waits for the PowerShell script to be executed. When the interval expires, the operation fails. Enter a positive value in milliseconds. An empty value means no time-out; the script execution continues indefinitely.\n    mailSubject - The mail subject to be used for filtering mails.\n    mailDateStart - The minutes to go back in time from current time in order to look for mails.\n\nResults\:\n    rawList - the entire list of mails.\n    mailSender - The mail sender.\n    OOFlow - The HPE OO flow to be triggered.\n   \nResponses\:\n    success - The PowerShell script or cmdlet was executed successfully.\n    failure - The command could not be executed.\n</pre>
+]]></descriptionCdata>
+  <annotation></annotation>
+  <name>getMail</name>
+  <categories/>
+  <inputs/>
+  <possibleResponses>
+    <opResponse id="ed09ecab-bf7b-443e-8fbf-e6501e95264c">
+      <annotation></annotation>
+      <name>success</name>
+      <isDefault>true</isDefault>
+      <onFailure>false</onFailure>
+      <type>RESOLVED</type>
+      <matchRules/>
+    </opResponse>
+    <opResponse id="db18a2be-88e1-4d29-a9dc-39e2698684cd">
+      <annotation></annotation>
+      <name>failure</name>
+      <isDefault>false</isDefault>
+      <onFailure>true</onFailure>
+      <type>ERROR</type>
+      <matchRules/>
+    </opResponse>
+  </possibleResponses>
+  <availableResultExpressions/>
+  <resultExpression id="000f39ab-d639-4009-a39e-49bb272ec7f4">
+    <annotation></annotation>
+    <name>FailureMessage</name>
+    <fieldName>FailureMessage</fieldName>
+    <sourceType>RAWRESULT</sourceType>
+    <filters/>
+  </resultExpression>
+  <iconSpec id="e6ca2e22-884c-4cf5-986e-027c575842a3">
+    <baseIcon>flow.png</baseIcon>
+    <basePath>System</basePath>
+    <readOnly>false</readOnly>
+    <layers/>
+  </iconSpec>
+  <callouts/>
+  <checkPointFlow>true</checkPointFlow>
+  <compatibleRuntimeContext>false</compatibleRuntimeContext>
+  <historyCheckPointFlow>true</historyCheckPointFlow>
+  <steps>
+    <step id="24bfa2f1-5569-420e-9165-527d49fd027e">
+      <annotation>40b2b7b3-3112-4f0b-af43-ce07eba398ea.24bfa2f1-5569-420e-9165-527d49fd027e.description</annotation>
+      <name>Get Messages</name>
+      <bounds>
+        <x>221.0</x>
+        <y>62.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings>
+        <staticBinding id="6abe1a91-70cc-4094-a192-94684c92a844">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>apiUser</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>ashwin.kum.naik@hpe.com</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="8683b3fe-7a94-48dc-8cdf-385c80881ae2">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>apiPassword</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>Avaya@789</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="423097eb-262d-4836-bd7e-4a41269f33ba">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>keepSessionAlive</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>True</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="73815adb-1ca8-4abc-b5b6-dde83b87fb17">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>connectionTimeout</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>180000</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="e3cb18d9-8509-49b0-a644-68e2e725ed60">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>false</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>scriptTimeout</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>180000</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="b9b6d2ac-6cbe-4294-9f1e-3466ce6063fa">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>mailSubject</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>EG India</value>
+          <record>false</record>
+        </staticBinding>
+        <staticBinding id="cc41823f-be7c-44a7-812f-c7292acce674">
+          <annotation></annotation>
+          <assignFromContext>false</assignFromContext>
+          <assignToContext>false</assignToContext>
+          <inputType>STRING</inputType>
+          <isList>false</isList>
+          <required>true</required>
+          <isPersisted>true</isPersisted>
+          <inputSymbol>mailDateStart</inputSymbol>
+          <listDelimiter>,</listDelimiter>
+          <value>100</value>
+          <record>false</record>
+        </staticBinding>
+      </bindings>
+      <transitions>
+        <transition id="be5dc216-7ad3-4732-a84e-c76064cb5660">
+          <annotation></annotation>
+          <name>failure</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>7b0ca280-ee65-45fe-9cae-3159ca700f91</refId>
+          </destination>
+          <source>
+            <refId>24bfa2f1-5569-420e-9165-527d49fd027e</refId>
+          </source>
+          <positions>
+            <point>
+              <x>238.0</x>
+              <y>250.0</y>
+            </point>
+            <point>
+              <x>141.0</x>
+              <y>96.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+        <transition id="89ff808c-4eae-4b7c-89ad-28e4933bf8ac">
+          <annotation></annotation>
+          <name>success</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>31511045-01f2-4964-bf51-eb967633a194</refId>
+          </destination>
+          <source>
+            <refId>24bfa2f1-5569-420e-9165-527d49fd027e</refId>
+          </source>
+          <positions>
+            <point>
+              <x>238.0</x>
+              <y>250.0</y>
+            </point>
+            <point>
+              <x>531.0</x>
+              <y>157.0</y>
+            </point>
+          </positions>
+          <labelPosition>
+            <x>333.0</x>
+            <y>0.0</y>
+          </labelPosition>
+        </transition>
+      </transitions>
+      <properties/>
+      <opRef>
+        <refId>5ac2efa0-435a-4cab-8b75-2b4165708548</refId>
+      </opRef>
+      <assignments>
+        <flowVariableAssignment id="91166902-20ce-4ba6-9378-52ea7e0023a4">
+          <annotation></annotation>
+          <name>assignment</name>
+          <action>OVERWRITE</action>
+          <assignmentTargetType>FLOW_VARIABLE</assignmentTargetType>
+          <contextKey>mailSender</contextKey>
+          <expression id="25bcc748-3df3-40a1-a0b5-cf67134168de">
+            <annotation></annotation>
+            <name>Result: mailSender</name>
+            <fieldName>mailSender</fieldName>
+            <sourceType>AVAILABLE_RESULT</sourceType>
+            <filters>
+              <scriptletFilter id="26caa9be-e8f1-4ac1-92e3-546e38719a9d">
+                <annotation></annotation>
+                <name>Scriptlet</name>
+                <scriptlet id="77729a64-f614-404c-8298-8f339b688995">
+                  <annotation></annotation>
+                  <name>default</name>
+                  <script>//get values
+var log_keyName = &quot;log&quot;;
+var sc_keyName = &quot;success_counter&quot;;
+var fc_keyName = &quot;failure_counter&quot;;
+var log_val = scriptletBranchContext.get(&quot;val_tmp&quot;);
+var sc_val = scriptletBranchContext.get(&quot;success_counter_tmp&quot;);
+var fc_val = scriptletBranchContext.get(&quot;failure_counter_tmp&quot;);
+var delimiter = &quot;\n&quot;;
+
+//append log list
+var currentVal = scriptletContext.get(log_keyName);
+
+if (currentVal == null) {
+                scriptletContext.put(log_keyName, log_val);
+                }
+                else {
+                                scriptletContext.put(log_keyName, currentVal + delimiter + log_val);
+                                }
+                                                
+
+//appends success list
+var currentVal = scriptletContext.get(sc_keyName);
+
+if (currentVal == null) {
+                scriptletContext.put(sc_keyName, sc_val);
+                }
+                else {
+                                scriptletContext.put(sc_keyName, Number(currentVal) + Number(sc_val));
+                                }
+
+//appends failure list
+var currentVal = scriptletContext.get(fc_keyName);
+
+                if (currentVal == null) {
+                                scriptletContext.put(fc_keyName, fc_val);
+                                }
+                                else {
+                                                scriptletContext.put(fc_keyName, Number(currentVal) + Number(fc_val));
+                                                }
+</script>
+                  <type>NASHORN</type>
+                </scriptlet>
+              </scriptletFilter>
+            </filters>
+          </expression>
+        </flowVariableAssignment>
+      </assignments>
+      <throttleSize>0</throttleSize>
+    </step>
+    <returnStep id="7b0ca280-ee65-45fe-9cae-3159ca700f91">
+      <annotation></annotation>
+      <name>Error : failure</name>
+      <bounds>
+        <x>91.0</x>
+        <y>62.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="34a67d30-297b-409f-8235-e0b58b9ec741">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>failure</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>7b0ca280-ee65-45fe-9cae-3159ca700f91</refId>
+          </destination>
+          <source>
+            <refId>7b0ca280-ee65-45fe-9cae-3159ca700f91</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>ERROR</returnStepType>
+      <assignments/>
+    </returnStep>
+    <returnStep id="31511045-01f2-4964-bf51-eb967633a194">
+      <annotation></annotation>
+      <name>Resolved : success</name>
+      <bounds>
+        <x>481.0</x>
+        <y>62.0</y>
+      </bounds>
+      <layer>-1</layer>
+      <hideInbound>false</hideInbound>
+      <addResultToRunContext>false</addResultToRunContext>
+      <isCriticalStep>false</isCriticalStep>
+      <isNonBlocking>false</isNonBlocking>
+      <isParallelStep>false</isParallelStep>
+      <isSingleResponse>false</isSingleResponse>
+      <recordInHistory>false</recordInHistory>
+      <recordRawOutput>true</recordRawOutput>
+      <recordPrimaryOutput>true</recordPrimaryOutput>
+      <checkPointStep>true</checkPointStep>
+      <historyCheckPointStep>true</historyCheckPointStep>
+      <scriptResultStep>false</scriptResultStep>
+      <userPrompt></userPrompt>
+      <bindings/>
+      <transitions>
+        <transition id="ecef7bec-33d3-44e9-b306-8de77fa1a8d2">
+          <annotation></annotation>
+          <name>return</name>
+          <command>NEXT</command>
+          <linkMode>false</linkMode>
+          <responseSymbol>success</responseSymbol>
+          <shouldHandoff>false</shouldHandoff>
+          <transitionValue>0.0</transitionValue>
+          <destination>
+            <refId>31511045-01f2-4964-bf51-eb967633a194</refId>
+          </destination>
+          <source>
+            <refId>31511045-01f2-4964-bf51-eb967633a194</refId>
+          </source>
+          <positions/>
+        </transition>
+      </transitions>
+      <properties/>
+      <returnStepType>RESOLVED</returnStepType>
+      <assignments/>
+    </returnStep>
+  </steps>
+  <startSteps>24bfa2f1-5569-420e-9165-527d49fd027e</startSteps>
+</flow>
