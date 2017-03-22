@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="46337cff-b71c-49d7-85b6-d2781e4c2c92">
+  <descriptionCdata><![CDATA[]]></descriptionCdata>
+  <annotation></annotation>
+  <name>apiOperation</name>
+  <storage>
+    <string>executions</string>
+    <string>flows</string>
+  </storage>
+</selectionList>

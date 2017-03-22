@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selectionList id="7046ecd5-4ada-466c-894a-e2f5929c829e">
+  <descriptionCdata><![CDATA[]]></descriptionCdata>
+  <annotation></annotation>
+  <name>Yes or No</name>
+  <storage>
+    <string>YES</string>
+    <string>NO</string>
+  </storage>
+</selectionList>
